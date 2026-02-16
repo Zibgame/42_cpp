@@ -5,37 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/16 12:11:49 by zcadinot          #+#    #+#              #
-#    Updated: 2026/02/16 12:11:50 by zcadinot         ###   ########.fr        #
+#    Created: 2026/02/16 15:17:40 by zcadinot          #+#    #+#              #
+#    Updated: 2026/02/16 15:51:49 by zcadinot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = unnecessaryViolence
+NAME = replace
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp \
-		Weapon.cpp \
-		HumanA.cpp \
-		HumanB.cpp
-
-OBJS = $(SRCS:.cpp=.o)
-
-HEADERS = Weapon.hpp \
-			HumanA.hpp \
-			HumanB.hpp
+SRC = main.cpp
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-
-%.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)

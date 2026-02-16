@@ -6,26 +6,30 @@
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 10:38:20 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/02/16 11:32:35 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/02/16 14:00:33 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+
 int main()
 {
-	/* { */
-	/* 	Weapon club = Weapon("crude spiked club"); */
-	/* 	HumanA bob("Bob", club); */
-	/* 	bob.attack(); */
-	/* 	club.setType("some other type of club"); */
-	/* 	bob.attack(); */
-	/* } */
-	/* { */
-	/* 	Weapon club = Weapon("crude spiked club"); */
-	/* 	HumanB jim("Jim"); */
-	/* 	jim.setWeapon(club); */
-	/* 	jim.attack(); */
-	/* 	club.setType("some other type of club"); */
-	/* 	jim.attack(); */
-	/* } */
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+	}
+	{
+		Weapon club = Weapon("crude spiked club");
+		HumanB jim("Jim");
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+	}
 	return 0;
 }
