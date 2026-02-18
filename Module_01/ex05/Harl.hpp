@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Replace.hpp                                        :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/16 15:17:06 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/02/16 15:35:45 by zcadinot         ###   ########.fr       */
+/*   Created: 2026/02/16 15:55:00 by zcadinot          #+#    #+#             */
+/*   Updated: 2026/02/18 10:52:32 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <fstream>
 #include <string>
 
-#define RED "\033[31m"
-#define GREEN "\033[32m"
-#define YELLOW "\033[33m"
-#define RESET "\033[0m"
-#define BRED "\033[1;31m"
-#define BGREEN "\033[1;32m"
-#define BYELLOW "\033[1;33m"
-#define BBLUE "\033[1;34m"
-#define RESET "\033[0m"
+class Harl
+{
+	public:
+		Harl();
+		void complain(std::string level);
+		~Harl();
 
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+    std::string levels[4];
+    void (Harl::*functions[4])();
+};

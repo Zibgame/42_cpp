@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/02/16 15:17:40 by zcadinot          #+#    #+#              #
-#    Updated: 2026/02/16 15:51:49 by zcadinot         ###   ########.fr        #
+#    Created: 2026/02/16 15:54:51 by zcadinot          #+#    #+#              #
+#    Updated: 2026/02/16 15:54:55 by zcadinot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = replace
+NAME = harl
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp Harl.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
