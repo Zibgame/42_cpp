@@ -28,5 +28,7 @@ void HumanB::setWeapon(Weapon& weapon)
 
 void HumanB::attack()
 {
+	if (!_weapon)
+		return ;
 	std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 }
