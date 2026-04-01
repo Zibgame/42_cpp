@@ -6,14 +6,14 @@
 #    By: zcadinot <zcadinot@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/30 18:20:46 by zcadinot          #+#    #+#              #
-#    Updated: 2026/03/30 18:20:48 by zcadinot         ###   ########.fr        #
+#    Updated: 2026/04/01 16:21:20 by zcadinot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = bureaucrat
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -I. -std=c++98
 
 SRCS = main.cpp \
 	   Bureaucrat.cpp
