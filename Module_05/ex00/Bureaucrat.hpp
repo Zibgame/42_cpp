@@ -6,7 +6,7 @@
 /*   By: zcadinot <zcadinot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/30 18:15:30 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/01 16:55:58 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/04/01 17:02:16 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -42,3 +42,5 @@ class Bureaucrat
         const std::string _name;
        int _grade;
 };
+
+std::ostream &operator<<(std::ostream &o, const Bureaucrat &b);
