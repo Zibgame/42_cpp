@@ -5,38 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 17:28:13 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/07 13:48:41 by zcadinot         ###   ########.fr       */
+/*   Created: 2026/04/07 17:02:35 by zcadinot          #+#    #+#             */
+/*   Updated: 2026/04/07 17:02:37 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "Serializer.hpp"
+#include <iostream>
 
-int main()
+int main(void)
 {
-	try
-	{
-		Bureaucrat bob("Bob", 50);
-		Form tax("TaxForm", 45, 30);
+    Data data;
 
-		std::cout << bob << std::endl;
-		std::cout << tax << std::endl;
+    data.id = 42;
+    data.name = "zib";
 
-		bob.signForm(tax);
+    uintptr_t raw = Serializer::serialize(&data);
+    Data* ptr = Serializer::deserialize(raw);
 
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
+    std::cout << "Original: " << &data << std::endl;
+    std::cout << "Serialized: " << raw << std::endl;
+    std::cout << "Deserialized: " << ptr << std::endl;
 
-		bob.signForm(tax);
+    if (ptr == &data)
+        std::cout << "OK: same pointer" << std::endl;
+    else
+        std::cout << "Error" << std::endl;
 
-		std::cout << tax << std::endl;
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+    return 0;
 }

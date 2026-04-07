@@ -6,37 +6,29 @@
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/01 17:28:13 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/07 13:48:41 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/04/07 13:56:26 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	try
-	{
-		Bureaucrat bob("Bob", 50);
-		Form tax("TaxForm", 45, 30);
+	Bureaucrat boss("Boss", 1);
 
-		std::cout << bob << std::endl;
-		std::cout << tax << std::endl;
+	ShrubberyCreationForm s("home");
+	RobotomyRequestForm r("Bender");
+	PresidentialPardonForm p("Arthur");
 
-		bob.signForm(tax);
+	boss.signForm(s);
+	boss.executeForm(s);
 
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
-		bob.incrementGrade();
+	boss.signForm(r);
+	boss.executeForm(r);
 
-		bob.signForm(tax);
-
-		std::cout << tax << std::endl;
-	}
-	catch (std::exception& e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+	boss.signForm(p);
+	boss.executeForm(p);
 }

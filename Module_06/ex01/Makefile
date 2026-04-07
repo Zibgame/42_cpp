@@ -5,23 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/04/01 17:28:15 by zcadinot          #+#    #+#              #
-#    Updated: 2026/04/07 13:48:48 by zcadinot         ###   ########.fr        #
+#    Created: 2026/04/07 17:01:54 by zcadinot          #+#    #+#              #
+#    Updated: 2026/04/07 17:01:56 by zcadinot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = serialize
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Serializer.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

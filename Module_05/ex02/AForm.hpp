@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/01 17:28:10 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/07 13:48:29 by zcadinot         ###   ########.fr       */
+/*   Created: 2026/04/07 13:54:48 by zcadinot          #+#    #+#             */
+/*   Updated: 2026/04/07 13:54:50 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <iostream>
 #include <exception>
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 private:
 	const std::string _name;
@@ -27,10 +27,10 @@ private:
 	const int _gradeExec;
 
 public:
-	Form(const std::string name, int gradeSign, int gradeExec);
-	Form(const Form& other);
-	Form& operator=(const Form& other);
-	~Form();
+	AForm(const std::string name, int gradeSign, int gradeExec);
+	AForm(const AForm& other);
+	AForm& operator=(const AForm& other);
+	virtual ~AForm();
 
 	const std::string getName() const;
 	bool isSigned() const;
@@ -38,6 +38,9 @@ public:
 	int getGradeExec() const;
 
 	void beSigned(const Bureaucrat& b);
+	void execute(Bureaucrat const & executor) const;
+
+	virtual void executeAction() const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
@@ -50,8 +53,14 @@ public:
 	public:
 		const char* what() const throw();
 	};
+
+	class FormNotSignedException : public std::exception
+	{
+	public:
+		const char* what() const throw();
+	};
 };
 
-std::ostream& operator<<(std::ostream& o, const Form& f);
+std::ostream& operator<<(std::ostream& o, const AForm& f);
 
 #endif
