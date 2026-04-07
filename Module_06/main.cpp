@@ -6,14 +6,16 @@
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/07 16:09:05 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/07 16:10:18 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/04/07 16:14:36 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    std::cout << "main";
+    if (ac != 2)
+        return (1);
+    ScalarConverter::convert(av[1]);
     return (0);
 }
