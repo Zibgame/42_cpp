@@ -6,50 +6,77 @@
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/13 14:43:54 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/13 15:02:22 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/04/16 13:12:37 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include "Array.hpp"
 
-#include "Array.hpp"
-#include <iostream>
+#define MAX_VAL 10
+
+void printArray(const Array<int>& arr)
+{
+    unsigned int i = 0;
+    while (i < arr.size())
+    {
+        std::cout << arr[i] << " ";
+        i++;
+    }
+    std::cout << std::endl;
+}
 
 int main(void)
 {
-    Array<int> a(3);
+    Array<int> numbers(MAX_VAL);
 
-    a[0] = 10;
-    a[1] = 20;
-    a[2] = 30;
+    srand(time(NULL));
 
-    std::cout << "Array content:" << std::endl;
-
-    unsigned int i = 0;
-    while (i < a.size())
+    std::cout << "Filling array:" << std::endl;
+    int i = 0;
+    while (i < MAX_VAL)
     {
-        std::cout << a[i] << std::endl;
+        numbers[i] = rand() % 100;
         i++;
     }
+    printArray(numbers);
 
-    std::cout << "\nCopy test:" << std::endl;
+    std::cout << "\nTesting copy constructor:" << std::endl;
+    Array<int> copy(numbers);
+    printArray(copy);
 
-    Array<int> b = a;
-    b[0] = 99;
+    std::cout << "\nModify original:" << std::endl;
+    numbers[0] = 999;
+    printArray(numbers);
 
-    std::cout << "a[0] = " << a[0] << std::endl;
-    std::cout << "b[0] = " << b[0] << std::endl;
+    std::cout << "Copy should NOT change:" << std::endl;
+    printArray(copy);
 
-    std::cout << "\nOut of bounds test:" << std::endl;
+    std::cout << "\nTesting assignment operator:" << std::endl;
+    Array<int> assign;
+    assign = numbers;
+    printArray(assign);
+
+    std::cout << "\nTesting out of bounds:" << std::endl;
 
     try
     {
-        std::cout << a[10] << std::endl;
+        std::cout << numbers[MAX_VAL] << std::endl;
     }
-    catch (std::exception &e)
+    catch (const std::exception& e)
     {
-        std::cout << "Exception caught" << std::endl;
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        std::cout << numbers[-1] << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
     }
 
     return 0;
