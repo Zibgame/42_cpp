@@ -6,7 +6,7 @@
 /*   By: zcadinot <zcadinot@student.42lehavre.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/16 14:54:39 by zcadinot          #+#    #+#             */
-/*   Updated: 2026/04/16 14:56:57 by zcadinot         ###   ########.fr       */
+/*   Updated: 2026/04/16 15:12:24 by zcadinot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,16 @@ int Span::longestSpan()
     int max = *std::max_element(_data.begin(), _data.end());
 
     return max - min;
+}
+
+typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+
+const_iterator begin() const
+{
+    return this->c.begin();
+}
+
+const_iterator end() const
+{
+    return this->c.end();
 }
